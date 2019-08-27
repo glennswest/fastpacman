@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: fastpacman
+  name: fastpacman
+spec:
+  containers:
+  - image: glennswest/fastpacman:2019
+    imagePullPolicy: Always
+    name: fastpacman
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    securityContext:
+      privileged: true
+  dnsPolicy: ClusterFirst
+  nodeSelector:
+    beta.kubernetes.io/os: windows
+  restartPolicy: Always
+  securityContext:
+    privileged: true
+
